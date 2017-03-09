@@ -1,0 +1,131 @@
+<Window x:Class="myLoop.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*" MinHeight="160" />
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="3*" MinHeight="160"/>
+            <RowDefinition Height="24"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" MinWidth="256"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="1*" MinWidth="128"  />
+        </Grid.ColumnDefinitions>
+
+        <ToolBarTray DockPanel.Dock="Top" Background="Transparent"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <ToolBar ToolBarTray.IsLocked="True">
+                <Button x:Name="New" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/myLoop;component\img\New.png"/>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center">
+                            New
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Open" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/myLoop;component\img\Open.png"/>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center">
+                            Open
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Save" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/myLoop;component\img\Save.png"/>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center">
+                            Save
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+
+        </ToolBarTray>
+
+        <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+        <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ToolBarTray Grid.Column="0" Margin="0,16,0,0" Background="Transparent" DockPanel.Dock="Left" Orientation="Vertical">
+                <ToolBar ToolBarTray.IsLocked="True" >
+                    <Button x:Name="SrcCopy">
+                            <Image Source="/myLoop;component\img\Copy.png"/>
+                    </Button>
+                    <Button x:Name="SrcPaste">
+                        <Image Source="/myLoop;component\img\Paste.png"/>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+            <TextBox x:Name="Src" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" FontFamily="Lucida Console" FontSize="18" Text="" VerticalScrollBarVisibility="Auto"/>
+        </Grid>
+        <GridSplitter Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Grid Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ToolBarTray Grid.Column="0" Margin="0,16,0,0" Background="Transparent" DockPanel.Dock="Left" Orientation="Vertical">
+                <ToolBar ToolBarTray.IsLocked="True" >
+                    <Button x:Name="DstCopy">
+                        <Image Source="/myLoop;component\img\Copy.png"/>
+                    </Button>
+          
+                </ToolBar>
+            </ToolBarTray>
+            <TextBox x:Name="Dst" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontFamily="Lucida Console" FontSize="14"/>
+        </Grid>
+
+        <Button x:Name="Logo" Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="4" Margin="8,0,0,0" Content="www.ranghetto.com" Cursor="Hand" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock TextDecorations="Underline"  >
+                <ContentPresenter />
+                    </TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="Blue" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="Red" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="3">
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="4,0,24,0" Width="128">
+                    Repetition
+                </Label>
+                <TextBox x:Name="Repetition" Width="64" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="4,0,24,0" Width="128">
+                    Comment Chars
+                </Label>
+                <TextBox x:Name="CommentChars" Width="64" />
+            </StackPanel>
+            <Separator Height="16" RenderTransformOrigin="0.099,7.875"></Separator>
+            <Button x:Name="GO">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/myLoop;component\img\Next.png" />
+                    <TextBlock Margin="8,0,0,0" VerticalAlignment="Center">
+                            GO!!!!
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <TextBox Margin="0,10,0,0" MinHeight="200" Text="Use {0} for index 0 to n-1&#xA;Use {1} for index 1 to n&#xA;Use {0:000} if you want index like 000, 001, 002 etc&#xD;&#xA;Use '#' at begin of row for no repetition&#xD;&#xA;Use &quot;!NEW&quot; for start a new repetition loop" />
+        </StackPanel>
+
+    </Grid>
+
+</Window>
